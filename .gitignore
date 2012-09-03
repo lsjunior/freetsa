@@ -1,0 +1,7 @@
+**.svn/
+**target/
+.classpath
+.checkstyle
+.externalToolBuilders/
+.project
+.settings/
