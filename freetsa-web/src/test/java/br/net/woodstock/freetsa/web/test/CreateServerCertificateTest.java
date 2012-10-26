@@ -5,7 +5,7 @@ import java.io.FileOutputStream;
 
 import junit.framework.TestCase;
 import br.net.woodstock.rockframework.security.Alias;
-import br.net.woodstock.rockframework.security.cert.CertificateBuilderRequest;
+import br.net.woodstock.rockframework.security.cert.CertificateRequest;
 import br.net.woodstock.rockframework.security.cert.ExtendedKeyUsageType;
 import br.net.woodstock.rockframework.security.cert.KeyUsageType;
 import br.net.woodstock.rockframework.security.cert.PrivateKeyHolder;
@@ -19,8 +19,12 @@ import br.net.woodstock.rockframework.security.store.impl.JCAStore;
 
 public class CreateServerCertificateTest extends TestCase {
 
+	public CreateServerCertificateTest() {
+		super();
+	}
+
 	public void testCreateSelfSignedCert() throws Exception {
-		CertificateBuilderRequest request = new CertificateBuilderRequest("Lourival Sabino");
+		CertificateRequest request = new CertificateRequest("Lourival Sabino");
 		request.withEmail("junior@woodstock.net.br");
 		request.withIssuer("Woodstock Tecnologia");
 		request.withKeyUsage(KeyUsageType.DIGITAL_SIGNATURE, KeyUsageType.NON_REPUDIATION, KeyUsageType.KEY_AGREEMENT);
@@ -35,7 +39,7 @@ public class CreateServerCertificateTest extends TestCase {
 	}
 
 	public void xtestCreateCA() throws Exception {
-		CertificateBuilderRequest request = new CertificateBuilderRequest("Woodstock Tecnologia CA");
+		CertificateRequest request = new CertificateRequest("Woodstock Tecnologia CA");
 		request.withCa(true);
 		request.withComment("Woodstock Tecnologia CA");
 		request.withEmail("ca@woodstock.net.br");
@@ -53,7 +57,7 @@ public class CreateServerCertificateTest extends TestCase {
 		caStore.read(inputStream, "woodstock");
 		PrivateKeyEntry entry = (PrivateKeyEntry) caStore.get(new PasswordAlias("woodstock", "woodstock"), StoreEntryType.PRIVATE_KEY);
 
-		CertificateBuilderRequest request = new CertificateBuilderRequest("Lourival Sabino");
+		CertificateRequest request = new CertificateRequest("Lourival Sabino");
 		request.withEmail("junior@woodstock.net.br");
 		request.withKeyUsage(KeyUsageType.DIGITAL_SIGNATURE, KeyUsageType.NON_REPUDIATION, KeyUsageType.KEY_AGREEMENT);
 		request.withExtendedKeyUsage(ExtendedKeyUsageType.TIMESTAMPING);

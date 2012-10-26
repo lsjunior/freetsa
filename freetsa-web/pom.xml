@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.net.woodstock.freetsa</groupId>
 	<artifactId>freetsa-web</artifactId>
@@ -10,17 +11,18 @@
 		<!-- Test -->
 		<test />
 		<!-- Libs -->
-		<bouncycastle.version>1.46</bouncycastle.version>
+		<bouncycastle.version>1.47</bouncycastle.version>
 		<jsp.version>2.1</jsp.version>
 		<junit.version>3.8.2</junit.version>
-		<rockframework.version>2.0.5</rockframework.version>
+		<log4j.version>1.2.17</log4j.version>
+		<rockframework.version>2.0.7</rockframework.version>
 		<servlet.version>2.5</servlet.version>
+		<slf4j.version>1.7.2</slf4j.version>
 		<!-- Plugins -->
-		<plugin.compiler.version>2.3.2</plugin.compiler.version>
-		<plugin.jar.version>2.3.2</plugin.jar.version>
-		<plugin.resources.version>2.4.3</plugin.resources.version>
-		<plugin.surefire.version>2.6</plugin.surefire.version>
-		<plugin.war.version>2.1.1</plugin.war.version>
+		<plugin.compiler.version>2.5.1</plugin.compiler.version>
+		<plugin.resources.version>2.6</plugin.resources.version>
+		<plugin.surefire.version>2.12.4</plugin.surefire.version>
+		<plugin.war.version>2.3</plugin.war.version>
 	</properties>
 	<build>
 		<defaultGoal>package</defaultGoal>
@@ -28,7 +30,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
+				<version>${plugin.compiler.version}</version>
 				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>
@@ -38,7 +40,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.4.3</version>
+				<version>${plugin.resources.version}</version>
 				<configuration>
 					<encoding>ISO-8859-1</encoding>
 				</configuration>
@@ -46,9 +48,9 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.6</version>
+				<version>${plugin.surefire.version}</version>
 				<configuration>
-					<failIfNoTests>false</failIfNoTests>
+					<skipTests>true</skipTests>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -90,21 +92,39 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.bouncycastle</groupId>
-			<artifactId>bcmail-jdk16</artifactId>
+			<artifactId>bcmail-jdk15on</artifactId>
 			<version>${bouncycastle.version}</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.bouncycastle</groupId>
-			<artifactId>bcprov-jdk16</artifactId>
+			<artifactId>bcpkix-jdk15on</artifactId>
 			<version>${bouncycastle.version}</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.bouncycastle</groupId>
-			<artifactId>bctsp-jdk16</artifactId>
+			<artifactId>bcprov-jdk15on</artifactId>
 			<version>${bouncycastle.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.version}</version>
 			<scope>compile</scope>
 		</dependency>
 	</dependencies>

@@ -11,6 +11,10 @@ import br.net.woodstock.rockframework.utils.IOUtils;
 
 public class TimeStampServerTest extends TestCase {
 
+	public TimeStampServerTest() {
+		super();
+	}
+
 	public void test1() throws Exception {
 		TimeStampClient client = new URLTimeStampClient("http://localhost:8080/freetsa-web/timestamp");
 		FileInputStream inputStream = new FileInputStream("/home/lourival/Documentos/curriculum.pdf");

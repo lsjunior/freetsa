@@ -8,9 +8,13 @@ import br.net.woodstock.rockframework.security.timestamp.web.DefaultBouncyCastle
 
 public class TimeStampServlet extends BouncyCastleTimeStampServlet {
 
+	public static final String	PROPERTIES_FILE		= "freetsa.properties";
+
 	private static final long	serialVersionUID	= -7125952867120963318L;
 
-	public static final String	PROPERTIES_FILE		= "freetsa.properties";
+	public TimeStampServlet() {
+		super();
+	}
 
 	@Override
 	protected BouncyCastleTimeStampConfig getConfig() throws IOException {
